@@ -529,33 +529,33 @@ config:
 
 clickhouse:
   enabled: true
-#   clickhouse:
-#     imageVersion: "20.8.9.6"
-#     configmap:
-#       remote_servers:
-#         internal_replication: true
-#         replica:
-#           backup:
-#             enabled: false
-#       users:
-#         enabled: false
-#         user:
-#         # the first user will be used if enabled
-#         - name: default
-#           config:
-#             password: ""
-#             networks:
-#             - ::/0
-#             profile: default
-#             quota: default
+  clickhouse:
+    imageVersion: "20.8.9.6"
+    configmap:
+      remote_servers:
+        internal_replication: true
+        replica:
+          backup:
+            enabled: false
+      users:
+        enabled: false
+        user:
+          # the first user will be used if enabled
+          - name: default
+            config:
+              password: ""
+              networks:
+                - ::/0
+              profile: default
+              quota: default
 
-#     persistentVolumeClaim:
-#       enabled: true
-#       dataPersistentVolume:
-#         enabled: true
-#         accessModes:
-#         - "ReadWriteOnce"
-#         storage: "30Gi"
+    persistentVolumeClaim:
+      enabled: true
+      dataPersistentVolume:
+        enabled: true
+        accessModes:
+          - "ReadWriteOnce"
+        storage: "30Gi"
 
 ## Use this to enable an extra service account
 # serviceAccount:
@@ -585,18 +585,18 @@ externalClickhouse:
 # See https://github.com/bitnami/charts/tree/master/bitnami/kafka
 kafka:
   enabled: false
-  # replicaCount: 3
-  # allowPlaintextListener: true
-  # defaultReplicationFactor: 3
-  # offsetsTopicReplicationFactor: 3
-  # transactionStateLogReplicationFactor: 3
-  # transactionStateLogMinIsr: 3
-  # # 50 MB
-  # maxMessageBytes: "50000000"
-  # # 50 MB
-  # socketRequestMaxBytes: "50000000"
-  # service:
-  #   port: 9092
+  replicaCount: 3
+  allowPlaintextListener: true
+  defaultReplicationFactor: 3
+  offsetsTopicReplicationFactor: 3
+  transactionStateLogReplicationFactor: 3
+  transactionStateLogMinIsr: 3
+  # 50 MB
+  maxMessageBytes: "50000000"
+  # 50 MB
+  socketRequestMaxBytes: "50000000"
+  service:
+    port: 9092
   ## Use this to enable an extra service account
   # serviceAccount:
   #   create: false
@@ -616,15 +616,15 @@ externalKafka:
   port: 9092
 
 redis:
-  enabled: false
-  # nameOverride: sentry-redis
-  # usePassword: false
-  # ## Just omit the password field if your redis cluster doesn't use password
-  # # password: redis
-  # master:
-  #   persistence:
-  #     enabled: true
-  ## Use this to enable an extra service account
+  enabled: true
+  nameOverride: sentry-redis
+  usePassword: false
+  ## Just omit the password field if your redis cluster doesn't use password
+  # password: redis
+  master:
+    persistence:
+      enabled: true
+  # Use this to enable an extra service account
   # serviceAccount:
   #   create: false
   #   name: sentry-redis
@@ -662,7 +662,7 @@ externalPostgresql:
   username: postgres
   password: postgres
   database: sentry
-  # sslMode: require
+  sslMode: require
 
 rabbitmq:
   ## If disabled, Redis will be used instead as the broker.
