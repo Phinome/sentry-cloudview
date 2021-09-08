@@ -32,7 +32,7 @@ jobs:
       - name: Build zips
         uses: yeouchien/helm3-action@f3a7c239c5c60777210c8e631839edf5dd3fa29c
         with:
-          command: package main/sentry --destination gh-pages/charts
+          command: package main/sentry-cloudview --destination gh-pages/charts
 
       - name: Build zips
         uses: yeouchien/helm3-action@f3a7c239c5c60777210c8e631839edf5dd3fa29c
@@ -47,7 +47,7 @@ jobs:
       - name: Create index file
         uses: yeouchien/helm3-action@f3a7c239c5c60777210c8e631839edf5dd3fa29c
         with:
-          command: repo index --url https://sentry-kubernetes.github.io/charts ./gh-pages/charts
+          command: repo index --url https://phinome.github.io/sentry-cloudview ./gh-pages/charts
 
       - name: Commit files
         run: |
