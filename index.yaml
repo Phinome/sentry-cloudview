@@ -3,7 +3,7 @@ entries:
   clickhouse:
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2021-09-08T13:19:17.309013161Z"
+    created: "2021-09-08T13:41:15.317305013Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -22,8 +22,44 @@ entries:
     version: 3.0.0
   sentry-cloudview:
   - apiVersion: v2
+    appVersion: 21.8.0
+    created: "2021-09-08T13:41:15.370070585Z"
+    dependencies:
+    - condition: redis.enabled
+      name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.3.2
+    - condition: kafka.enabled
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.0.0
+    - condition: clickhouse.enabled
+      name: clickhouse
+      repository: https://sentry-kubernetes.github.io/charts
+      version: 3.0.0
+    - alias: rabbitmq
+      condition: rabbitmq.enabled
+      name: rabbitmq
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.9.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.2.4
+    - condition: nginx.enabled
+      name: nginx
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.3.3
+    description: A Helm chart for Kubernetes
+    digest: aeff605cbb919e170dfadb6771d7d99fc9caa65f6cb6e2c9af10c494938e2111
+    name: sentry-cloudview
+    type: application
+    urls:
+    - https://phinome.github.io/sentry-cloudview/sentry-cloudview-11.6.1.tgz
+    version: 11.6.1
+  - apiVersion: v2
     appVersion: 21.7.0
-    created: "2021-09-08T13:19:17.338666156Z"
+    created: "2021-09-08T13:41:15.343352494Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -60,7 +96,7 @@ entries:
   sentry-kubernetes:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-09-08T13:19:17.339259764Z"
+    created: "2021-09-08T13:41:15.370518891Z"
     description: A Helm chart for sentry-kubernetes (https://github.com/getsentry/sentry-kubernetes)
     digest: 233c575ab9e3eb3f63ee347cf32d3719b22e6546952a160cf253b32f895b5b83
     home: https://github.com/getsentry/sentry-kubernetes
@@ -76,4 +112,4 @@ entries:
     urls:
     - https://phinome.github.io/sentry-cloudview/sentry-kubernetes-0.3.1.tgz
     version: 0.3.1
-generated: "2021-09-08T13:19:17.305578515Z"
+generated: "2021-09-08T13:41:15.315597288Z"
